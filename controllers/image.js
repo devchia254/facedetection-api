@@ -5,6 +5,7 @@ const app = new Clarifai.App({
    });
 
 const handleApiCall = (req, res) => {
+    // req.body.input is the image url inputted from the fetch method '/imageUrl' at the onButtonSubmit function
     app.models
        .predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
        .then(data => {
@@ -15,7 +16,7 @@ const handleApiCall = (req, res) => {
 
 const handleImage = (req, res, db) => {
     // console.log('req.params', req.params);
-    const { id } = req.body;
+    const { id } = req;
     db('users').where('id', '=', id)
         .increment('entries', 1)
         .returning('entries')
