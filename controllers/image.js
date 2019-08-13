@@ -1,7 +1,8 @@
 const Clarifai = require('clarifai');
 
+// CLARIFAI_API_KEY is stored in the config vars of fast-sands-24633 heroku app
 const app = new Clarifai.App({
-    apiKey: '6ee2b305556341c99a57b6373763d1b8'
+    apiKey: process.env.CLARIFAI_API_KEY
    });
 
 const handleApiCall = (req, res) => {
