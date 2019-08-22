@@ -4,7 +4,7 @@ const handleRegister = (req, res, db, bcrypt) => {
     if (!email || !name || !password) {
         return res.status(400).json('incorrect form submission');
     }
-
+    // Bcrypt hashing config
     const saltRounds = 10;
     const salt = bcrypt.genSaltSync(saltRounds);
     const hash = bcrypt.hashSync(password, salt);
@@ -28,7 +28,7 @@ const handleRegister = (req, res, db, bcrypt) => {
                     res.json(user[0]); // give back response of user in JSON
                 })
         })
-        .then(trx.commit) // commit to the insertion
+        .then(trx.commit) // commit to the transaction or registration
         .catch(trx.rollback) // if anything fails, rollback the changes
     })
     .catch(err => res.status(400).json('Unable to register user'))

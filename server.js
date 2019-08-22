@@ -18,17 +18,12 @@ const db = knex({
     }
 });
 
-// db.select('*').from('users').then(data => {
-//     console.log('testingDB', data);
-// });
-
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => { res.send('This is working!'); })
-
 app.post('/signin', (req, res) => { signin.handleSignIn(req, res, db, bcrypt) })
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
 app.get('/profile/:id', (req, res) => { profile.handleProfile(req, res, db) })
