@@ -15,9 +15,10 @@ This is the source code for the **Back-end**. For the Front-end, [**click here**
 - Understand relational databases on storing user data, using `postgreSQL`.
 
 ## Code Snippets
-Below are some of code extracts of this project.
+Below are some code extracts of this project.
 
 ### server.js:
+---
 
 ##### Connect to Database and Middlewares
 ```javascript
@@ -54,6 +55,7 @@ app.listen(process.env.PORT || 3000, () => {
 ```
 
 ### register.js
+---
 ##### Apply hash on passwords using `bcrypt`
 ```javascript
 const handleRegister = (req, res, db, bcrypt) => {
